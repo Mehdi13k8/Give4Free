@@ -16,8 +16,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
+@RestController
 @EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })
 public class Give4FreeApp {
     private static final Logger log = LoggerFactory.getLogger(Give4FreeApp.class);
@@ -26,6 +31,12 @@ public class Give4FreeApp {
 
     public Give4FreeApp(Environment env) {
         this.env = env;
+    }
+
+    @RequestMapping("/api/authentification")
+    @ResponseBody
+    public String welcome() {
+        return "Welcome to Spring Boot + REST + JWT Example.";
     }
 
     /**
