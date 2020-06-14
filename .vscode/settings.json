@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "appService.defaultWebAppToDeploy": "/subscriptions/6ba21073-4eea-490f-8ff2-480dd146985b/resourceGroups/Projet_fin_annee/providers/Microsoft.Web/sites/Give4Free",
+    "appService.deploySubpath": "target/give-4-free-0.0.1-SNAPSHOT.war"
+}

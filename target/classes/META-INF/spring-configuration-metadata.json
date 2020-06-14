@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "application",
+      "type": "com.epitech.give4free.config.ApplicationProperties",
+      "sourceType": "com.epitech.give4free.config.ApplicationProperties"
+    },
+    {
+      "name": "spring.datasource.hikari",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.epitech.give4free.config.CloudDatabaseConfiguration",
+      "sourceMethod": "dataSource()"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}
