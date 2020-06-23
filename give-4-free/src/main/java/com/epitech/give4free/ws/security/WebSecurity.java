@@ -5,6 +5,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.epitech.give4free.ws.service.UserService;
@@ -29,8 +30,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
 		.permitAll()
 		.anyRequest().authenticated().and()
 		.addFilter(getAuthenticationFilter())
-		.addFilter(new AuthorizationFilter(authenticationManager()));  		//new AuthenticationFilter(authenticationManager())); avec le lien perso plus be
-
+		.addFilter(new AuthorizationFilter(authenticationManager()))  		//new AuthenticationFilter(authenticationManager())); avec le lien perso plus be
+		.sessionManagement()
+		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		
 		/*http.csrf().disable().authorizeRequests() // ancienne manière de se co
 		.antMatchers(HttpMethod.POST, "/users") //hardecoded mais pas la opti
 		.permitAll().anyRequest().authenticated();*/
