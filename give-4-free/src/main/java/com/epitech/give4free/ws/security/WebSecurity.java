@@ -14,7 +14,7 @@ import com.epitech.give4free.ws.service.UserService;
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter{
 	//gestion de la secu de l'api
-	
+
 	private final UserService userDetailsService;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 

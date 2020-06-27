@@ -65,14 +65,14 @@ public class UserController {
 	public UserRest updateUser(@PathVariable String userID, @RequestBody UserDetailsRequestModel userDetails)
 	{
 		UserRest returnValue = new UserRest();
-		
-		//if (userDetails.getFirstName().isEmpty() || userDetails.getLastName().isEmpty() || userDetails.getEmail().isEmpty()) throw new RuntimeException("Error on user add check documentation");
+
+		if (userDetails.getFirstName().isEmpty() || userDetails.getLastName().isEmpty() || userDetails.getEmail().isEmpty()) throw new RuntimeException("Error on user add check documentation");
 		UserDto userDto = new UserDto();
 		BeanUtils.copyProperties(userDetails, userDto);
 
 		UserDto updateUser = userService.updateUser(userID, userDto);
 		BeanUtils.copyProperties(updateUser, returnValue);
-		
+
 		return returnValue;
 	}
 

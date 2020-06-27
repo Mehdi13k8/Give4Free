@@ -1,6 +1,7 @@
 package com.epitech.give4free.ws.security;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,6 +22,8 @@ import com.epitech.give4free.ws.service.UserService;
 import com.epitech.give4free.ws.shared.dto.UserDto;
 import com.epitech.give4free.ws.ui.model.request.UserLoginRequestModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -50,6 +53,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 		}
 	}
 
+	
 	@Override
 	protected void successfulAuthentication(HttpServletRequest req,
 			HttpServletResponse res, 
@@ -69,6 +73,14 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 
 		res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
 		res.addHeader("UserID", userDto.getUserId());
-	}
 
+		JsonObject myobject = new JsonObject();
+		myobject.addProperty("UserID", userDto.getUserId());
+		myobject.addProperty(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
+		String json = new Gson().toJson(myobject);
+
+		res.setContentType("application/json");
+		res.setCharacterEncoding("UTF-8");
+		res.getWriter().write(json);
+	}
 }
