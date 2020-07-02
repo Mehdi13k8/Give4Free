@@ -1,5 +1,6 @@
 package com.epitech.give4free.ws.ui.controller;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -54,7 +55,9 @@ public class UserController {
 
 		UserDto createdUser = userService.createUser(userDto);
 		BeanUtils.copyProperties(createdUser, returnValue);
-		
+		//ModelMapper modelMapper = new ModelMapper();
+		//modelMapper.map(userDetails, userDto);
+
 
 		return returnValue;
 	}

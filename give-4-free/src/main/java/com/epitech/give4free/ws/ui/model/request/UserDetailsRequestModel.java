@@ -1,11 +1,14 @@
 package com.epitech.give4free.ws.ui.model.request;
 
+import java.util.List;
+
 public class UserDetailsRequestModel {
 
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String password;
+	private List<AnnoncesRequestModel> annonces;
 
 	public String getFirstName() {
 		return firstName;
@@ -31,4 +34,19 @@ public class UserDetailsRequestModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+    /**
+     * @return List<AnnoncesRequestModel> return the annonces
+     */
+    public List<AnnoncesRequestModel> getAnnonces() {
+        return annonces;
+    }
+
+    /**
+     * @param annonces the annonces to set
+     */
+    public void setAnnonces(List<AnnoncesRequestModel> annonces) {
+        this.annonces = annonces;
+    }
+
 }

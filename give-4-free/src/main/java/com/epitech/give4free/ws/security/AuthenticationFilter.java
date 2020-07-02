@@ -1,7 +1,6 @@
 package com.epitech.give4free.ws.security;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
