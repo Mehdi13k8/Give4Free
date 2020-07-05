@@ -5,27 +5,13 @@ import java.util.Date;
 import com.epitech.give4free.ws.shared.dto.UserDto;
 
 public class AnnoncesRest {
-    private String adressId;
+    private String annoncesId;
     private String Title;
     private String Description;
-    private Date Date_debut;
-    private Date Date_fin;
+    private String Date_debut;
+    private String Date_fin;
     private String image;
-    private UserDto userDetails;
-
-    /**
-     * @return String return the adressId
-     */
-    public String getAdressId() {
-        return adressId;
-    }
-
-    /**
-     * @param adressId the adressId to set
-     */
-    public void setAdressId(String adressId) {
-        this.adressId = adressId;
-    }
+    private String userId;
 
     /**
      * @return String return the Title
@@ -56,34 +42,6 @@ public class AnnoncesRest {
     }
 
     /**
-     * @return Date return the Date_debut
-     */
-    public Date getDate_debut() {
-        return Date_debut;
-    }
-
-    /**
-     * @param Date_debut the Date_debut to set
-     */
-    public void setDate_debut(Date Date_debut) {
-        this.Date_debut = Date_debut;
-    }
-
-    /**
-     * @return Date return the Date_fin
-     */
-    public Date getDate_fin() {
-        return Date_fin;
-    }
-
-    /**
-     * @param Date_fin the Date_fin to set
-     */
-    public void setDate_fin(Date Date_fin) {
-        this.Date_fin = Date_fin;
-    }
-
-    /**
      * @return String return the image
      */
     public String getImage() {
@@ -98,17 +56,61 @@ public class AnnoncesRest {
     }
 
     /**
-     * @return UserDto return the userDetails
+     * @return String return the annoncesId
      */
-    public UserDto getUserDetails() {
-        return userDetails;
+    public String getAnnoncesId() {
+        return annoncesId;
     }
 
     /**
-     * @param userDetails the userDetails to set
+     * @param annoncesId the annoncesId to set
      */
-    public void setUserDetails(UserDto userDetails) {
-        this.userDetails = userDetails;
+    public void setAnnoncesId(String annoncesId) {
+        this.annoncesId = annoncesId;
+    }
+
+
+    /**
+     * @return String return the userId
+     */
+    public String getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId the userId to set
+     */
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+
+    /**
+     * @return String return the Date_debut
+     */
+    public String getDate_debut() {
+        return Date_debut;
+    }
+
+    /**
+     * @param Date_debut the Date_debut to set
+     */
+    public void setDate_debut(String Date_debut) {
+        this.Date_debut = Date_debut;
+    }
+
+    /**
+     * @return String return the Date_fin
+     */
+    public String getDate_fin() {
+        return Date_fin;
+    }
+
+    /**
+     * @param Date_fin the Date_fin to set
+     */
+    public void setDate_fin(String Date_fin) {
+        this.Date_fin = Date_fin;
     }
 
 }

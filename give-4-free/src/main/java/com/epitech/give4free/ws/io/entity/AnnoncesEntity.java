@@ -1,13 +1,17 @@
 package com.epitech.give4free.ws.io.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name = "annonces")
 public class AnnoncesEntity implements Serializable {
@@ -21,16 +25,19 @@ public class AnnoncesEntity implements Serializable {
     @GeneratedValue
     private long id;
 
-    @Column(length = 30, nullable = false)
+    @Column(length = 50, nullable = false)
     private String annoncesId;
 
     @Column(length = 50, nullable = false)
     private String Title;
-    @Column(length = 150, nullable = false)
+
+    //array
+    @Column(length = 5000, nullable = false)
     private String Description;
-    @Column(length = 8, nullable = false)
+
+    @Column(length = 50, nullable = false)
     private String Date_debut;
-    @Column(length = 8, nullable = false)
+    @Column(length = 50, nullable = false)
     private String Date_fin;
     @Column(nullable = true)
     private String image;
@@ -78,20 +85,6 @@ public class AnnoncesEntity implements Serializable {
      */
     public void setTitle(String Title) {
         this.Title = Title;
-    }
-
-    /**
-     * @return String return the Description
-     */
-    public String getDescription() {
-        return Description;
-    }
-
-    /**
-     * @param Description the Description to set
-     */
-    public void setDescription(String Description) {
-        this.Description = Description;
     }
 
     /**
@@ -148,6 +141,20 @@ public class AnnoncesEntity implements Serializable {
      */
     public void setUserDetails(UserEntity userDetails) {
         this.userDetails = userDetails;
+    }
+
+    /**
+     * @return String return the Description
+     */
+    public String getDescription() {
+        return Description;
+    }
+
+    /**
+     * @param Description the Description to set
+     */
+    public void setDescription(String Description) {
+        this.Description = Description;
     }
 
 }

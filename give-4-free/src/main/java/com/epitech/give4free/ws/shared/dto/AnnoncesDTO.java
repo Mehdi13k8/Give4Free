@@ -1,20 +1,21 @@
 package com.epitech.give4free.ws.shared.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class AnnoncesDTO {
     /**
      *
      */
-    //private static final long serialVersionUID = 1L;
+    // private static final long serialVersionUID = 1L;
     private long id;
-    private String adressId;
+    private String annoncesId;
     private String Title;
     private String Description;
-    private Date Date_debut;
-    private Date Date_fin;
+    private String Date_debut;
+    private String Date_fin;
     private String image;
-    private UserDto userDetails;
+    private String userId;
 
     /**
      * @return long return the id
@@ -31,20 +32,6 @@ public class AnnoncesDTO {
     }
 
     /**
-     * @return UserDto return the userDetails
-     */
-    public UserDto getUserDetails() {
-        return userDetails;
-    }
-
-    /**
-     * @param userDetails the userDetails to set
-     */
-    public void setUserDetails(UserDto userDetails) {
-        this.userDetails = userDetails;
-    }
-
-    /**
      * @return String return the Title
      */
     public String getTitle() {
@@ -58,20 +45,61 @@ public class AnnoncesDTO {
         this.Title = Title;
     }
 
-
-
     /**
-     * @return String return the adressId
+     * @return String return the image
      */
-    public String getAdressId() {
-        return adressId;
+    public String getImage() {
+        return image;
     }
 
     /**
-     * @param adressId the adressId to set
+     * @param image the image to set
      */
-    public void setAdressId(String adressId) {
-        this.adressId = adressId;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    /**
+     * @return String return the userId
+     */
+    public String getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId the userId to set
+     */
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+
+    /**
+     * @return String return the Date_debut
+     */
+    public String getDate_debut() {
+        return Date_debut;
+    }
+
+    /**
+     * @param Date_debut the Date_debut to set
+     */
+    public void setDate_debut(String Date_debut) {
+        this.Date_debut = Date_debut;
+    }
+
+    /**
+     * @return String return the Date_fin
+     */
+    public String getDate_fin() {
+        return Date_fin;
+    }
+
+    /**
+     * @param Date_fin the Date_fin to set
+     */
+    public void setDate_fin(String Date_fin) {
+        this.Date_fin = Date_fin;
     }
 
     /**
@@ -88,46 +116,19 @@ public class AnnoncesDTO {
         this.Description = Description;
     }
 
+
     /**
-     * @return Date return the Date_debut
+     * @return String return the annoncesId
      */
-    public Date getDate_debut() {
-        return Date_debut;
+    public String getAnnoncesId() {
+        return annoncesId;
     }
 
     /**
-     * @param Date_debut the Date_debut to set
+     * @param annoncesId the annoncesId to set
      */
-    public void setDate_debut(Date Date_debut) {
-        this.Date_debut = Date_debut;
-    }
-
-    /**
-     * @return Date return the Date_fin
-     */
-    public Date getDate_fin() {
-        return Date_fin;
-    }
-
-    /**
-     * @param Date_fin the Date_fin to set
-     */
-    public void setDate_fin(Date Date_fin) {
-        this.Date_fin = Date_fin;
-    }
-
-    /**
-     * @return String return the image
-     */
-    public String getImage() {
-        return image;
-    }
-
-    /**
-     * @param image the image to set
-     */
-    public void setImage(String image) {
-        this.image = image;
+    public void setAnnoncesId(String annoncesId) {
+        this.annoncesId = annoncesId;
     }
 
 }

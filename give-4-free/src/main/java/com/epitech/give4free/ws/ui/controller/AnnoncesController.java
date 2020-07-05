@@ -27,12 +27,6 @@ public class AnnoncesController {
     public AnnoncesRest createAnnonces(@RequestBody AnnoncesRequestModel annoncesDetails) {
         AnnoncesRest returnValue = new AnnoncesRest();
 
-
-        //will return json in string
-        Gson gson = new Gson();
-        var obj = gson.toJson(annoncesDetails);
-
-        System.out.println("gg + " + obj);
         if (annoncesDetails.getDescription() == null ||
             annoncesDetails.getTitle().isEmpty() ||
             annoncesDetails.getDate_debut() == null || 
@@ -40,12 +34,15 @@ public class AnnoncesController {
             annoncesDetails.getImage().isEmpty())
                 throw new RuntimeException("Error on annonce add check documentation");
 
-
         AnnoncesDTO annoncesDto = new AnnoncesDTO();
         BeanUtils.copyProperties(annoncesDetails, annoncesDto);
 
+        System.out.println("here 1");
         AnnoncesDTO createdannonces = annoncesService.createAnnonces(annoncesDto);
+
+        System.out.println("here 2 + ");
         BeanUtils.copyProperties(createdannonces, returnValue);
+        System.out.println("here 3");
         // ModelMapper modelMapper = new ModelMapper();
         // modelMapper.map(userDetails, userDto);
         return returnValue;
