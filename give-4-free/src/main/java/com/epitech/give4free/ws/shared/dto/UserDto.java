@@ -1,6 +1,7 @@
 package com.epitech.give4free.ws.shared.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class UserDto implements Serializable {
 
@@ -14,6 +15,7 @@ public class UserDto implements Serializable {
 	private String encryptedPassword;
 	private String emailVerificationToken;
 	private Boolean emailVerificationStatus = false;
+	private List<AnnoncesDTO> annonces;
 
 	public long getId() {
 		return id;
@@ -86,5 +88,27 @@ public class UserDto implements Serializable {
 	public void setEmailVerificationStatus(Boolean emailVerificationStatus) {
 		this.emailVerificationStatus = emailVerificationStatus;
 	}
+
+
+    /**
+     * @return Boolean return the emailVerificationStatus
+     */
+    public Boolean isEmailVerificationStatus() {
+        return emailVerificationStatus;
+    }
+
+    /**
+     * @return List<AnnoncesDTO> return the annonces
+     */
+    public List<AnnoncesDTO> getAnnonces() {
+        return annonces;
+    }
+
+    /**
+     * @param annonces the annonces to set
+     */
+    public void setAnnonces(List<AnnoncesDTO> annonces) {
+        this.annonces = annonces;
+    }
 
 }

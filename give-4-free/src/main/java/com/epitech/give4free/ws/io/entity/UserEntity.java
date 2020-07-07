@@ -1,11 +1,14 @@
 package com.epitech.give4free.ws.io.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity(name="users")
 public class UserEntity implements Serializable {
@@ -20,20 +23,21 @@ public class UserEntity implements Serializable {
 	private long id;
 
 	@Column(nullable = false)
-	private String userId; // Emulated Id (safe to give on http)
+	private String userId;
+	// Emulated Id (safe to give on http)
 
 	@Column(nullable = false, length = 50)
 	private String firstName;
 
 	@Column(nullable = false, length = 50)
 	private String lastName;
-	
+
 	@Column(nullable = false, length = 120)
 	private String email;
-	
+
 	@Column(nullable = false)
 	private String encryptedPassword;
-	
+
 	private String emailVerificationToken;
 
 	//@Column(nullable = false, columnDefinition = "boolean default false") correction code non portable
@@ -41,68 +45,135 @@ public class UserEntity implements Serializable {
 	@Column(nullable = false)
 	private Boolean emailVerificationStatus = false;
 
-	public long getId() {
-		return id;
-	}
+	@OneToMany(mappedBy = "userDetails", cascade = CascadeType.ALL)	
+	private List<AnnoncesEntity> annonces;
 
-	public void setId(long id) {
-		this.id = id;
-	}
 
-	public String getUserId() {
-		return userId;
-	}
+    /**
+     * @return long return the id
+     */
+    public long getId() {
+        return id;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    /**
+     * @param id the id to set
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    /**
+     * @return String return the firstName
+     */
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    /**
+     * @param firstName the firstName to set
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    /**
+     * @return String return the lastName
+     */
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    /**
+     * @param lastName the lastName to set
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    /**
+     * @return String return the email
+     */
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getEncryptedPassword() {
-		return encryptedPassword;
-	}
+    /**
+     * @return String return the encryptedPassword
+     */
+    public String getEncryptedPassword() {
+        return encryptedPassword;
+    }
 
-	public void setEncryptedPassword(String encryptedPassword) {
-		this.encryptedPassword = encryptedPassword;
-	}
+    /**
+     * @param encryptedPassword the encryptedPassword to set
+     */
+    public void setEncryptedPassword(String encryptedPassword) {
+        this.encryptedPassword = encryptedPassword;
+    }
 
-	public String getEmailVerificationToken() {
-		return emailVerificationToken;
-	}
+    /**
+     * @return String return the emailVerificationToken
+     */
+    public String getEmailVerificationToken() {
+        return emailVerificationToken;
+    }
 
-	public void setEmailVerificationToken(String emailVerificationToken) {
-		this.emailVerificationToken = emailVerificationToken;
-	}
+    /**
+     * @param emailVerificationToken the emailVerificationToken to set
+     */
+    public void setEmailVerificationToken(String emailVerificationToken) {
+        this.emailVerificationToken = emailVerificationToken;
+    }
 
-	public Boolean getEmailVerificationStatus() {
-		return emailVerificationStatus;
-	}
+    /**
+     * @return Boolean return the emailVerificationStatus
+     */
+    public Boolean isEmailVerificationStatus() {
+        return emailVerificationStatus;
+    }
 
-	public void setEmailVerificationStatus(Boolean emailVerificationStatus) {
-		this.emailVerificationStatus = emailVerificationStatus;
-	}
+    /**
+     * @param emailVerificationStatus the emailVerificationStatus to set
+     */
+    public void setEmailVerificationStatus(Boolean emailVerificationStatus) {
+        this.emailVerificationStatus = emailVerificationStatus;
+    }
+
+    /**
+     * @return List<AnnoncesEntity> return the annonces
+     */
+    public List<AnnoncesEntity> getAnnonces() {
+        return annonces;
+    }
+
+    /**
+     * @param annonces the annonces to set
+     */
+    public void setAnnonces(List<AnnoncesEntity> annonces) {
+        this.annonces = annonces;
+    }
+
+
+    /**
+     * @return String return the userId
+     */
+    public String getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId the userId to set
+     */
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
 }
