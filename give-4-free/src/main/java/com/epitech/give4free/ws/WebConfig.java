@@ -13,24 +13,24 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
-@EnableWebMvc
-public class WebConfig implements Filter,WebMvcConfigurer {
+// @Configuration
+// @EnableWebMvc
+// public class WebConfig implements Filter,WebMvcConfigurer {
 
-    @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) {
-      HttpServletResponse response = (HttpServletResponse) res;
-      HttpServletRequest request = (HttpServletRequest) req;
-      System.out.println("WebConfig; "+request.getRequestURI());
-          System.out.println("Pre-flight");
-          response.setHeader("Access-Control-Allow-Origin", "*");
-          response.setHeader("Access-Control-Allow-Methods", "POST,GET,DELETE,PUT");
-          response.setHeader("Access-Control-Max-Age", "3600");
-          response.setHeader("Access-Control-Allow-Headers", "Access-Control-Expose-Headers"+"Authorization, content-type," +
-          "USERID"+"ROLE"+
-                  "access-control-request-headers,access-control-request-method,accept,origin,authorization,x-requested-with,responseType,observe");
-          response.setStatus(HttpServletResponse.SC_OK);
+//     @Override
+//     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) {
+//       HttpServletResponse response = (HttpServletResponse) res;
+//       HttpServletRequest request = (HttpServletRequest) req;
+//       System.out.println("WebConfig; "+request.getRequestURI());
+//           System.out.println("Pre-flight");
+//           response.setHeader("Access-Control-Allow-Origin", "*");
+//           response.setHeader("Access-Control-Allow-Methods", "POST,GET,DELETE,PUT");
+//           response.setHeader("Access-Control-Max-Age", "3600");
+//           response.setHeader("Access-Control-Allow-Headers", "Access-Control-Expose-Headers"+"Authorization, content-type," +
+//           "USERID"+"ROLE"+
+//                   "access-control-request-headers,access-control-request-method,accept,origin,authorization,x-requested-with,responseType,observe");
+//           response.setStatus(HttpServletResponse.SC_OK);
 
-    }
+//     }
 
-}
+// }
