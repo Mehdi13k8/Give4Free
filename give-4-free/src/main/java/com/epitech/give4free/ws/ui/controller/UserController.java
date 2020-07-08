@@ -18,13 +18,33 @@ import com.epitech.give4free.ws.shared.dto.UserDto;
 import com.epitech.give4free.ws.ui.model.request.UserDetailsRequestModel;
 import com.epitech.give4free.ws.ui.model.response.UserRest;
 
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
+import com.google.gson.reflect.TypeToken;
+
 @RestController
 @RequestMapping("users") // http://localhost:8080/users
 public class UserController {
 
 	@Autowired
 	UserService userService;
-	
+
+	@Autowired
+	ModelMapper modelMapper;
+
+	@GetMapping(path="/",
+	consumes = { MediaType.APPLICATION_JSON_VALUE},
+	produces = { MediaType.APPLICATION_JSON_VALUE }
+	)
+	public Iterable<UserRest> getallUsers()
+	{
+		Iterable<UserDto> userDto = userService.getAllUsers();
+
+		Type listType = new TypeToken<Iterable<UserDto>>(){}.getType();
+		Iterable<UserRest> usersRest = modelMapper.map(userDto, listType);
+		return usersRest;
+	}
+
 	@GetMapping(path="/{userID}",
 			consumes = { MediaType.APPLICATION_JSON_VALUE},
 			produces = { MediaType.APPLICATION_JSON_VALUE }

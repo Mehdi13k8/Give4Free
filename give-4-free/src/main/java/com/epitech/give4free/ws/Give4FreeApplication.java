@@ -1,5 +1,6 @@
 package com.epitech.give4free.ws;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -22,4 +23,10 @@ public class Give4FreeApplication {
 	{
 		return new SpringApplicationContext();
 	}
+
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
+	}
+
 }

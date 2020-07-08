@@ -1,7 +1,9 @@
 package com.epitech.give4free.ws.service.Impl;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -16,11 +18,19 @@ import com.epitech.give4free.ws.service.UserService;
 import com.epitech.give4free.ws.shared.Utils;
 import com.epitech.give4free.ws.shared.dto.UserDto;
 
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
+import com.google.gson.reflect.TypeToken;
+
+
 @Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserRepository userRepository;
+
+	@Autowired
+	ModelMapper modelMapper;
 
 	@Autowired
 	Utils utils;
@@ -112,4 +122,20 @@ public class UserServiceImpl implements UserService {
 		userRepository.delete(userEntity);
 	}
 
+	@Override
+	public Iterable<UserDto> getAllUsers() {
+		Iterable<UserEntity> users = userRepository.findAll();
+
+		Type listType = new TypeToken<Iterable<UserDto>>(){}.getType();
+		Iterable<UserDto> usersDto = modelMapper.map(users, listType);
+
+		// marche pas car je n'ai pas de constructeur pour l'iterable
+		//BeanUtils.copyProperties(users, usersDto); //Solution de gros flemmard ;) mais ça marche et c simple
+
+		// exemple de base comment "instancier directement d'un type à un autre, par ex via les fk annonces -> users ou inverse"
+		// List<Post> post = postRepository.findAll();
+		// Type listType = new TypeToken<List<PostDTO>>(){}.getType();
+		// List<PostDTO> postDTOList = modelMapper.map(post, listType);
+		return usersDto;
+	}
 }
