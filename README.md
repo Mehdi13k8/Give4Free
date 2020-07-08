@@ -1,5 +1,5 @@
 # Give4Free
-Projet de fin d'année avec mon groupe, Solution SaaS de financement participatif, Back-end Java Spring Boot
+Projet de fin d'année avec mon groupe(Front-end), Solution SaaS de financement participatif, Back-end Java Spring Boot
 
 
     
