@@ -33,9 +33,6 @@ header: "Content-Type" : "application/json"
 "Authorization": "token"
 body null
 
-allez bougez vot kul
-
-(1 mentions J'aime)
 
 (appelle Delete) 
 
