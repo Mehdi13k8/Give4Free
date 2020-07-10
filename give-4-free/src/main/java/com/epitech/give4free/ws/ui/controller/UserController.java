@@ -102,9 +102,13 @@ public class UserController {
 	@DeleteMapping(path="/{userID}",
 			consumes = { MediaType.APPLICATION_JSON_VALUE},
 			produces = { MediaType.APPLICATION_JSON_VALUE })
-	public String deleteUser(@PathVariable String userID)
+	public UserRest deleteUser(@PathVariable String userID)
 	{
+		UserRest returnValue = new UserRest();
+		UserDto userDto = userService.getUserByUserID(userID);
+		BeanUtils.copyProperties(userDto, returnValue);
 		userService.deleteUser(userID);
-		return "deleted successfully";
+
+		return returnValue;
 	}
 }
