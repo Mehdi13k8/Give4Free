@@ -4,9 +4,9 @@ import com.epitech.give4free.ws.service.AnnoncesService;
 import com.epitech.give4free.ws.shared.dto.AnnoncesDTO;
 import com.epitech.give4free.ws.ui.model.request.AnnoncesRequestModel;
 import com.epitech.give4free.ws.ui.model.response.AnnoncesRest;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.google.gson.Gson;
+// import com.fasterxml.jackson.databind.ObjectMapper;
+// import com.fasterxml.jackson.databind.ObjectWriter;
+// import com.google.gson.Gson;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

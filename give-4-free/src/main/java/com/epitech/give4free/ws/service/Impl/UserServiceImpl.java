@@ -1,7 +1,7 @@
 package com.epitech.give4free.ws.service.Impl;
 
 import java.util.ArrayList;
-import java.util.List;
+// import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
@@ -19,7 +19,7 @@ import com.epitech.give4free.ws.shared.Utils;
 import com.epitech.give4free.ws.shared.dto.UserDto;
 
 import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
+// import java.lang.reflect.TypeVariable;
 import com.google.gson.reflect.TypeToken;
 
 
@@ -61,6 +61,16 @@ public class UserServiceImpl implements UserService {
 		BeanUtils.copyProperties(storedUserDetails, returnValue);
 
 		return returnValue;
+	}
+
+	@Override
+	public void addPaypalEmail(String userID, String paypalEmail) {
+		UserEntity userEntity = userRepository.findByUserId(userID);
+		if (userEntity == null)
+			throw new UsernameNotFoundException(userID);
+
+			userEntity.setPaypalEmail(paypalEmail);
+			userRepository.save(userEntity);
 	}
 
 	@Override

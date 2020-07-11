@@ -17,9 +17,12 @@ import com.epitech.give4free.ws.service.UserService;
 import com.epitech.give4free.ws.shared.dto.UserDto;
 import com.epitech.give4free.ws.ui.model.request.UserDetailsRequestModel;
 import com.epitech.give4free.ws.ui.model.response.UserRest;
+import com.fasterxml.jackson.databind.node.TextNode;
 
 import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
+// import java.lang.reflect.TypeVariable;
+// import java.util.Map;
+
 import com.google.gson.reflect.TypeToken;
 
 @RestController
@@ -31,6 +34,17 @@ public class UserController {
 
 	@Autowired
 	ModelMapper modelMapper;
+
+	///paypal?code=C21AAEcrAgqtm0O-9URKRW73k1bQNAXr--cWxn5d4uACjYbYWnBXk8wZMhWswsa7szjEWFUKVmthTmiy5pdv0x1FgK_ExTzDQ&scope=email
+	@PostMapping(path="/paypal/{userID}",
+	consumes = { MediaType.APPLICATION_JSON_VALUE},
+	produces = { MediaType.APPLICATION_JSON_VALUE }
+	)
+	public String setUserPaypalEmail(@PathVariable String userID, @RequestBody TextNode newPaypalEmail) // textnode standard jackson parser, sinon il y a des types spéciaux pour les string en spring boot
+	{
+		userService.addPaypalEmail(userID, newPaypalEmail.asText()); //Mise à jours du compte "paypal" sans "Api Oauth2" car ceux chargé du front son en retard, "ajout en brute"
+		return ("The Paypal account Is well linked to " + userID + " account with new paypal " + newPaypalEmail.asText());
+	}
 
 	@GetMapping(path="/",
 	consumes = { MediaType.APPLICATION_JSON_VALUE},
@@ -110,5 +124,24 @@ public class UserController {
 		userService.deleteUser(userID);
 
 		return returnValue;
+	}
+}
+
+
+class UserPaypalCall {
+	String userID;
+	String paypalEmail;
+
+	public String getUserID() {
+		return userID;
+	}
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+	public String getPaypalEmail() {
+		return paypalEmail;
+	}
+	public void setPaypalEmail(String PaypalEmail) {
+		this.paypalEmail = PaypalEmail;
 	}
 }

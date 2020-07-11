@@ -1,8 +1,8 @@
 package com.epitech.give4free.ws.ui.model.response;
 
-import java.util.Date;
+// import java.util.Date;
 
-import com.epitech.give4free.ws.shared.dto.UserDto;
+// import com.epitech.give4free.ws.shared.dto.UserDto;
 
 public class AnnoncesRest {
     private String annoncesId;

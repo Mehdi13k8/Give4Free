@@ -1,7 +1,7 @@
 package com.epitech.give4free.ws.shared.dto;
 
-import java.util.ArrayList;
-import java.util.Date;
+// import java.util.ArrayList;
+// import java.util.Date;
 
 public class AnnoncesDTO {
     /**

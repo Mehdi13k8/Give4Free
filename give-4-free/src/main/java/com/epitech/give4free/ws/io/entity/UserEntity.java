@@ -35,6 +35,9 @@ public class UserEntity implements Serializable {
 	@Column(nullable = false, length = 120)
 	private String email;
 
+    @Column(nullable = true, length = 120)
+	private String paypalEmail;
+
 	@Column(nullable = false)
 	private String encryptedPassword;
 
@@ -174,6 +177,21 @@ public class UserEntity implements Serializable {
      */
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+
+    /**
+     * @return String return the paypalEmail
+     */
+    public String getPaypalEmail() {
+        return paypalEmail;
+    }
+
+    /**
+     * @param paypalEmail the paypalEmail to set
+     */
+    public void setPaypalEmail(String paypalEmail) {
+        this.paypalEmail = paypalEmail;
     }
 
 }

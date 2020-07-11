@@ -1,9 +1,9 @@
 package com.epitech.give4free.ws.ui.model.request;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+// import java.lang.reflect.Array;
+// import java.util.ArrayList;
+// import java.util.Date;
+// import java.util.List;
 
 public class AnnoncesRequestModel {
     private String Title;
