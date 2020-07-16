@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.epitech.give4free.ws.io.entity.UserEntity;
 import com.epitech.give4free.ws.service.UserService;
 import com.epitech.give4free.ws.shared.dto.UserDto;
 import com.epitech.give4free.ws.ui.model.request.UserDetailsRequestModel;
@@ -20,8 +21,10 @@ import com.epitech.give4free.ws.ui.model.response.UserRest;
 import com.fasterxml.jackson.databind.node.TextNode;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 // import java.lang.reflect.TypeVariable;
 // import java.util.Map;
+import java.util.Iterator;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -50,13 +53,33 @@ public class UserController {
 	consumes = { MediaType.APPLICATION_JSON_VALUE},
 	produces = { MediaType.APPLICATION_JSON_VALUE }
 	)
-	public Iterable<UserRest> getallUsers()
+	public ArrayList<UserRest> getallUsers()
 	{
-		Iterable<UserDto> userDto = userService.getAllUsers();
+		ArrayList<UserDto> userDto = userService.getAllUsers();
+		ArrayList<UserRest> userRest = new ArrayList<UserRest>();
 
-		Type listType = new TypeToken<Iterable<UserDto>>(){}.getType();
-		Iterable<UserRest> usersRest = modelMapper.map(userDto, listType);
-		return usersRest;
+		for (int i = 0; i < userDto.size(); i++) {
+			UserRest userResp = new UserRest();
+			userResp.setFirstName(userDto.get(i).getFirstName());
+			userResp.setEmail(userDto.get(i).getEmail());
+			userResp.setUserId(userDto.get(i).getUserId());
+			userResp.setLastName(userDto.get(i).getLastName());
+			userResp.setAnnonces(userDto.get(i).getAnnonces());
+			userRest.add(userResp);
+            //System.out.print(userDto.get(i).getEmail() + " zzz");
+	    }
+
+		// Type listType = new TypeToken<Iterable<UserDto>>(){}.getType();
+		// Iterable<UserEntity> usersRest = modelMapper.map(userDto, listType);
+
+		// Iterator<UserEntity> itrEntity = usersRest.iterator();
+
+		// while (itrEntity.hasNext()) {
+		// 	UserEntity current = itrEntity.next();
+		// 	System.out.println("gg " + current.getId());
+		// }
+
+		return userRest;
 	}
 
 	@GetMapping(path="/{userID}",
@@ -70,6 +93,8 @@ public class UserController {
 		// user data object qui contient le vrai user, user service me donne des fonctions
 		UserDto userDto = userService.getUserByUserID(userID);
 		BeanUtils.copyProperties(userDto, returnValue);
+
+		
 		
 		return returnValue;
 	}
