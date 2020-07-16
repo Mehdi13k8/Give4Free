@@ -124,6 +124,10 @@ public class UserServiceImpl implements UserService {
 			listAnnonces.add(annoncesDTO);
 		}
 		returnValue.setAnnonces(listAnnonces);
+		returnValue.setEmail(userEntity.getEmail());
+		returnValue.setFirstName(userEntity.getFirstName());
+		returnValue.setLastName(userEntity.getLastName());
+		returnValue.setUserId(userEntity.getUserId());
 
 		// BeanUtils.copyProperties(userEntity, returnValue);
 		return returnValue;
